@@ -487,7 +487,13 @@ function calcularPropina(){
 }
 
 function mostrarTotalHtml(subtotal, propina, totalAPagar){
-
+    //Eliminar el ultimo resultado
+    //Para que no se nos repita el HTML al seleccionar un radio button diferente
+    const totalPagarDiv = document.querySelector('.total-pagar');
+    if(totalPagarDiv){ //si ya existe algo con esta clase, quitalo para que no se nos repita el codigo
+        totalPagarDiv.remove();
+    }
+    
     //Div de Totales a pagar
     const divTotales = document.createElement('div');
     divTotales.classList.add('total-pagar', 'my-5');
@@ -525,12 +531,6 @@ function mostrarTotalHtml(subtotal, propina, totalAPagar){
 
     totalParrafo.appendChild(totalSpan);
 
-    //Eliminar el ultimo resultado
-    //Para que no se nos repita el HTML al seleccionar un radio button diferente
-    const totalPagarDiv = document.querySelector('.total-pagar');
-    if(totalPagarDiv){ //si ya existe algo con esta clase, quitalo para que no se nos repita el codigo
-        totalPagarDiv.remove();
-    }
 
     divTotales.appendChild(subtotalParrafo);
     divTotales.appendChild(propinaParrafo);
